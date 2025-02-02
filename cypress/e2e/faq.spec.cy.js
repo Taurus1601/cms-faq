@@ -18,14 +18,17 @@ describe("FAQ Page", () => {
 
     // Submit the FAQ
     cy.contains("Submit").click();
-    cy.wait(50000); // Wait for the new FAQ to be saved
+    cy.wait(20000); // Wait for the new FAQ to be saved
     // Verify FAQ appears on the page
+    cy.contains("Write a Question").click();
+
     cy.contains("What is Cypress?").should("exist");
+
   });
 
   it("should edit an existing FAQ", () => {
     // Click the Update button for the FAQ
-    cy.contains("What is Cypress?").parent().contains("Update").click();
+    cy.contains("What is Cypress?").parent().parent().contains("Update").click();
 
     // Modify question & answer using realType
     cy.get(".ck-content").first().clear().realType("What is updated Cypress?");
@@ -40,7 +43,7 @@ describe("FAQ Page", () => {
 
   it("should delete an FAQ", () => {
     // Click Delete for the FAQ
-    cy.contains("What is updated Cypress?").parent().contains("Delete").click();
+    cy.contains("What is updated Cypress?").parent().parent().contains("Delete").click();
 
     // Verify FAQ is removed from the page
     cy.contains("What is updated Cypress?").should("not.exist");

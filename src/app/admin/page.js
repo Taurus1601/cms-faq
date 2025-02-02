@@ -91,6 +91,7 @@ export default function Page() {
       if (res.ok) {
         setQuestion("");
         setAnswer("");
+        setWriteQuestion(false);
       } else {
         alert("Error creating FAQ");
       }
@@ -140,7 +141,7 @@ export default function Page() {
                     <p dangerouslySetInnerHTML={{ __html: faq.answer }}></p>
                     <Button
                       variant="primary"
-                      className="absolute right-20 top-7"
+                      className="absolute right-20 top-7 update"
                       onClick={()=>setItem(faq)}
                       
                     >

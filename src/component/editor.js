@@ -41,7 +41,7 @@ import './editor.css';
 
 
 const LICENSE_KEY = 'GPL'; 
-export default function Editor({ onChange}) {
+export default function Editor({ onChange,content}) {
 	const editorContainerRef = useRef(null);
 	const editorRef = useRef(null);
 	const editorWordCountRef = useRef(null);
@@ -75,7 +75,6 @@ export default function Editor({ onChange}) {
 						'fontColor',
 						'fontBackgroundColor',
             '|',
-						'specialCharacters',
 						'horizontalLine',
 						'link',
 						'bookmark',
@@ -203,7 +202,7 @@ export default function Editor({ onChange}) {
 	}, [isLayoutReady]);
 
 	return (
-		<div className="main-container">
+		<div className="main-container answer-container">
 			<div className="editor-container editor-container_classic-editor editor-container_include-word-count" ref={editorContainerRef}>
 				<div className="editor-container__editor">
 					<div ref={editorRef}>
@@ -218,11 +217,12 @@ export default function Editor({ onChange}) {
 								}}
 								editor={ClassicEditor}
 								config={editorConfig}
-								
+								data={content}
                 onChange={(event, editor) => {
                   const data = editor.getData();
                   onChange(data);
                 }}
+				
 							/>
 						)}
 					</div>

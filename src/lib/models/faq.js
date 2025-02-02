@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const faqSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     question: {
         en: { type: String, required: true },
         hi: { type: String, default: "" },

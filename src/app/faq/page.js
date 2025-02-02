@@ -41,8 +41,8 @@ export default function AccordionDemo() {
           {typeof faqList.faqs !== "undefined" &&
             faqList.faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
+                <AccordionTrigger ><div dangerouslySetInnerHTML={{ __html: faq.question }}></div></AccordionTrigger>
+                <AccordionContent ><div dangerouslySetInnerHTML={{ __html: faq.answer }}></div></AccordionContent>
               </AccordionItem>
             ))}
         </Accordion>

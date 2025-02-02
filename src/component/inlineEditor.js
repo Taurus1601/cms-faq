@@ -20,7 +20,7 @@ import "./inlineEditor.css";
  */
 const LICENSE_KEY = "GPL"; // or <YOUR_LICENSE_KEY>.
 
-export default function Inlineeditor({  onChange }) {
+export default function Inlineeditor({  onChange ,content }) {
   const editorContainerRef = useRef(null);
   const editorRef = useRef(null);
   const [isLayoutReady, setIsLayoutReady] = useState(false);
@@ -73,7 +73,7 @@ export default function Inlineeditor({  onChange }) {
   }, [isLayoutReady]);
 
   return (
-    <div className="main-container">
+    <div className="main-container question-container" >
       <div
         className="editor-container editor-container_inline-editor"
         ref={editorContainerRef}
@@ -84,10 +84,15 @@ export default function Inlineeditor({  onChange }) {
               <CKEditor editor={InlineEditor}
 			   config={editorConfig} 
 			   data={content}
+         data-testid="question"
+        
 			   onChange={(event, editor) => {
 				const data = editor.getData();
 				onChange(data);
+
+        
 			   }}
+         
 			   />
             )}
           </div>
